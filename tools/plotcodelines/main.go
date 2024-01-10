@@ -18,10 +18,12 @@ import (
 func main() {
 	var folder string
 	var fileExt string
+	var outputpath string
 
 	// Define flags with default values
 	flag.StringVar(&folder, "folder", ".", "The folder path to consider")
 	flag.StringVar(&fileExt, "ext", ".js", "The file extension to consider")
+	flag.StringVar(&outputpath, "output", "lines_of_code_over_commit_time.png", "The path of the output png file")
 
 	// Parse the command line flags
 	flag.Parse()
@@ -142,7 +144,7 @@ func main() {
 	}
 
 	// Save the plot to a PNG file.
-	if err := p.Save(10*vg.Inch, 4*vg.Inch, "lines_of_code_over_commit_time.png"); err != nil {
+	if err := p.Save(10*vg.Inch, 4*vg.Inch, outputpath); err != nil {
 		panic(err)
 	}
 
